@@ -9,7 +9,7 @@ int main() {
     cout << "your arr elements before sorting: \n\n";
     sortlib::print(arr, size);
             char input;
-        cout << "\n\nselect\n1 for insertionSort \n2 for selectionSort \n3 for bubbleSort \n4 for MergeSort\n";
+        cout << "\n\nselect\n1 for insertionSort \n2 for selectionSort \n3 for bubbleSort \n4 for MergeSort\n5 for countSort\n-->";
         cin >> input;
         switch (input) {
             case '1': {
@@ -56,6 +56,16 @@ int main() {
                 break;
             }
 
+            case '5': {
+                auto start = std::chrono::steady_clock::now();
+                sortlib::countSort(arr, size);
+                auto end = std::chrono::steady_clock::now();
+                cout << "\n\nAfter sorting (countSort): \n \n";
+                sortlib::print(arr, size);
+                auto diff = end - start;
+                cout << "\nRunning Time: " << std::chrono::duration<double, std::milli>(diff).count() << " ms" << endl;
+                break;
+            }
             default:{
                 cout <<"not in numbers range \n";
                 break;

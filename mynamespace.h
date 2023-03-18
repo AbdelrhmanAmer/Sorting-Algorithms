@@ -5,6 +5,7 @@
 #pragma once
 #include <chrono>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace sortlib {
@@ -89,7 +90,32 @@ namespace sortlib {
         mergeSort(arr, mid+1, end);
         merge(arr, start, mid, end);
     }
+    template <class T>
+    void countSort(T arr[], int n)
+    {
+        // 1 - create frequency array
+        T max = *max_element(arr, arr + n);
+        T freq[max + 1] = {0};
+        int freq_size = sizeof(freq) / sizeof(freq[0]);
 
+        for (int i = 0; i < n; i++)
+            freq[arr[i]]++;
+
+        //  2) Add Each number to right of it accumulatively
+        for (int i = 1; i < freq_size; i++)
+            freq[i] += freq[i - 1];
+
+        // 3- We place the objects in their correct
+        // position and decrease the count by one.
+        T arr2[n];
+        for (int i = 0; i < n; i++)
+        {
+            arr2[(freq[arr[i]]) - 1] = arr[i];
+            freq[arr[i]]--;
+        }
+
+        memcpy(arr, arr2, sizeof(arr2));
+    }
     template<class T>
     void print(T arr[], int n) {
         int c = 0;
