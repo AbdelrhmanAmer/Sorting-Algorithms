@@ -22,22 +22,22 @@ namespace sortlib {
     void insertionSort(T *arr, int n) {
         for (int i = 1, j; i < n; ++i) {
             T temp = arr[i];
-            for (j = i; j > 0 && temp < arr[j - 1]; j--) {
-                arr[j] = arr[j - 1];
+            for (j = i; j > 0 && temp < arr[j - 1]; j--) {     // check if the current value is greater than the value before
+                arr[j] = arr[j - 1];                         // if the value before is bigger than the current value then shift your array
             }
-            arr[j] = temp;
+            arr[j] = temp;                // assign the variable temp what ever its value to the arr[j] which could be shifted or not .. based on the condition above
         }
     }
     template<class T>
     void selectionSort(T data[], int n) {
         for (int i = 0, least, j; i < n - 1; ++i) {
-            least = i;
+            least = i;    // assign the index of i to be the least
             for (j = i + 1; j < n; j++) {
-                if (data[least] > data[j]) {
-                    least = j;
+                if (data[least] > data[j]) {      // if the value of index least is greater than an element then swap them
+                    least = j;                   // exchange the indexes if arr[j] is less than the least
                 }
             }
-            swap(data[least], data[i]);
+            swap(data[least], data[i]);         //then swap them
         }
     }
 
@@ -45,10 +45,10 @@ namespace sortlib {
     void bubbleSort(T arr[], int n) {
         bool flag = true;
         for (int i = 0; i < n - 1; ++i) {
-            for (int j = 0; j < n - i - 1; ++j) {
+            for (int j = 0; j < n - i - 1; ++j) {     // n-i-1 to decrease the number of rounds as it sorted automatically from the last
                 if (arr[j] > arr[j + 1]) {
-                    flag = false;
-                    swap(arr[j + 1], arr[j]);
+                    flag = false;                     // check if array is already sorted or not to break the not needed loops
+                    swap(arr[j + 1], arr[j]);         // swap the two elements
                 }
             }
             if (flag) {
