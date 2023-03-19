@@ -117,6 +117,26 @@ namespace sortlib {
         memcpy(arr, arr2, sizeof(arr2));
     }
     template<class T>
+void shellSort(T arr[], int n) {
+    // Start with a large gap and reduce it
+    for (int gap = n/2; gap > 0; gap /= 2) {
+                                                // The first gap elements a[0..gap-1] are already in gapped order
+                                                // keep adding one more element until the entire array is gap sorted
+        for (int i = gap; i < n; i += 1){
+                                                // add a[i] to the elements that have been gap sorted
+            T temp = arr[i];
+                                            // shift earlier gap-sorted elements up until the correct location for a[i] is found
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+                                            // put temp (the original a[i]) in its correct location
+            arr[j] = temp;
+        }
+    }
+}
+
+    template<class T>
     void print(T arr[], int n) {
         int c = 0;
         for (int i = 0; i < n; ++i) {
