@@ -135,7 +135,32 @@ void shellSort(T arr[], int n) {
         }
     }
 }
-
+    template<class T>
+    int partioning(T arr[],int l,int h){
+        int pav=arr[l];
+        int i=l;
+        int j=h;
+        while (i<j){
+            do {
+                i++;
+            } while (arr[i]<=pav);
+            do {
+                j--;
+            } while (arr[j]>pav);
+            if(i<j){
+                swap(arr[i],arr[j]);
+            }}
+        swap(arr[l],arr[j]);
+        return j;
+    }
+    template<class T>
+    void quickSort(T arr[],int l,int h){
+        if (l<h) {
+            int pav = partioning(arr, l, h);
+            quickSort(arr,l,pav);
+            quickSort(arr,pav+1,h);
+        }
+    }
     template<class T>
     void print(T arr[], int n) {
         int c = 0;

@@ -5,6 +5,7 @@ int main() {
     cout <<"Enter Array Size: \n";
     cin >> size;
     int *arr =new int[size];
+    int l=0,h=size;
     sortlib::generateRandomArray(arr, size);
     cout << "your arr elements before sorting: \n\n";
     sortlib::print(arr, size);
@@ -76,6 +77,16 @@ int main() {
                 cout << "\nRunning Time: " << std::chrono::duration<double, std::milli>(diff).count() << " ms" << endl;
                 break;
 
+            }
+            case '7': {
+                auto start = std::chrono::steady_clock::now(); // start measuring time
+                sortlib::quickSort(arr,l,h);
+                auto end = std::chrono::steady_clock::now(); // stop measuring time
+                cout << "\n\nAfter sorting (quickSort): \n \n";
+                sortlib::print(arr, size);
+                auto diff = end - start;
+                cout <<"\nRunning Time: " << std::chrono::duration<double, std::milli>(diff).count() << " ms"<< endl;
+                break;
             }
             default:{
                 cout <<"not in numbers range \n";
