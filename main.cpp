@@ -10,7 +10,7 @@ int main() {
     cout << "your arr elements before sorting: \n\n";
     sortlib::print(arr, size);
             char input;
-        cout << "\n\nselect\n1 for insertionSort \n2 for selectionSort \n3 for bubbleSort \n4 for MergeSort\n5 for countSort\n6 for Shell sort\n-->";
+        cout << "\n\nselect\n1 for insertionSort \n2 for selectionSort \n3 for bubbleSort \n4 for MergeSort\n5 for countSort\n6 for Shell sort\n7 for quick sort\n-->";
         cin >> input;
         switch (input) {
             case '1': {

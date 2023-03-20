@@ -95,7 +95,7 @@ namespace sortlib {
     {
         // 1 - create frequency array
         T max = *max_element(arr, arr + n);
-        T freq[max + 1] = {0};
+        T freq[max + 1] ={0};
         int freq_size = sizeof(freq) / sizeof(freq[0]);
 
         for (int i = 0; i < n; i++)
