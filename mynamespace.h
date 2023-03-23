@@ -5,17 +5,19 @@
 #pragma once
 #include <chrono>
 #include <iostream>
-#include <algorithm>
+#include <random>
 using namespace std;
 
 namespace sortlib {
 
     template<class T>
-    void generateRandomArray(T* arr, int size) {
-        srand(time(nullptr));
-        for (int i = 0; i < size; i++) {
-            arr[i] = rand() % 100;         // generates a random number between 0 and 99
+    T* fill(long long size, long long upperLimit){
+        T* array = new T[size];
+        for (int i = 0; i < size; ++i) {
+            long double random_double = 65 + ( long double)rand() / (( long double)RAND_MAX / (122 - 65));
+            array[i] = random_double ;
         }
+        return array;
     }
 
     template<class T>

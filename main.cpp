@@ -1,12 +1,15 @@
 #include "mynamespace.h"
 
+typedef double my_type;
+
 int main() {
     int size;
     cout <<"Enter Array Size: \n";
     cin >> size;
-    int *arr =new int[size];
-    int l=0,h=size;
-    sortlib::generateRandomArray(arr, size);
+
+    my_type *arr = new my_type [size];
+    arr=sortlib::fill<my_type>(size, 100);
+
     cout << "your arr elements before sorting: \n\n";
     sortlib::print(arr, size);
             char input;
@@ -15,7 +18,7 @@ int main() {
         switch (input) {
             case '1': {
                 auto start = std::chrono::steady_clock::now(); // start measuring time
-                sortlib::insertionSort<int>(arr, size);
+                sortlib::insertionSort(arr, size);
                 auto end = std::chrono::steady_clock::now(); // stop measuring time
                 cout << "\n\nAfter sorting (insertionSort): \n \n";
                 sortlib::print(arr, size);
@@ -79,9 +82,10 @@ int main() {
 
             }
             case '7': {
-                auto start = std::chrono::steady_clock::now(); // start measuring time
+                int l=0,h=size;
+                auto start = std::chrono::steady_clock::now();
                 sortlib::quickSort(arr,l,h);
-                auto end = std::chrono::steady_clock::now(); // stop measuring time
+                auto end = std::chrono::steady_clock::now();
                 cout << "\n\nAfter sorting (quickSort): \n \n";
                 sortlib::print(arr, size);
                 auto diff = end - start;
