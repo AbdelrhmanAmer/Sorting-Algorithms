@@ -1,6 +1,7 @@
 #include "mynamespace.h"
 
-typedef double my_type;
+typedef int my_type;  //to change the data type of elements you only change the datatype here ,
+                        // note that double do not work with count sort func and this is normal .
 
 int main() {
     int size;
